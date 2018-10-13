@@ -1,19 +1,18 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: hello-world 
+  labels:
+    app: helloworld
+  name: helloworld
 spec:
-  selector:
-    matchLabels:
-      workload.user.cattle.io/workloadselector: hello-world
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
-        app: hello-world
+        app: helloworld
+      name: helloworld
     spec:
       containers:
-      - name: hello-world
+      - name: helloworld
         image: containersol/hello-world
-        ports:
-        - containerPort: 80
+        imagePullPolicy: Always
