@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: helloworld
+spec:
+  template:
+    metadata:
+      name: helloworld
+    spec:
+      containers:
+      - name: app
+        image: python
+        volumeMounts:
+          - name: hello_world
+            mountPath: /application
+        command: ["sh","-c"]
+        args: ["cp /application/hello_world.py /tmp/; chmod +x /tmp/hello_world.py; /tmp/hello_world.py"]
+      restartPolicy: Never
+      volumes:
+      - name: hello_world
+        configMap:
+          name: hello_world
+          items:
+            - key: hello_world.py
+              path: hello_world.py
+     
