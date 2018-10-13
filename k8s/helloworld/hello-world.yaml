@@ -1,17 +1,19 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: ubuntu
+  name: hello-world 
 spec:
-  replicas: 1
-  selector: 
-      matchLabels: 
-        app: ubuntu
+  selector:
+    matchLabels:
+      app: hello-world
+  replicas: 2
   template:
     metadata:
       labels:
-        app: ubuntu
+        app: hello-world
     spec:
       containers:
-        - name: ubuntu
-          image: ubuntu:xenial
+      - name: hello-world
+        image: containersol/hello-world
+        ports:
+        - containerPort: 80
