@@ -1,10 +1,14 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1beta2
+kind: Deployment
 metadata:
-  labels:
-    app: hello-world
-  name: hello-world
+  name: ubuntu
 spec:
-  containers:
-  - image: hello-world
-    name: hello-world
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+        - name: ubuntu
+          image: ubuntu:xenial
