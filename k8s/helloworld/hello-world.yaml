@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: hello-world
+      workload.user.cattle.io/workloadselector: hello-world
   replicas: 2
   template:
     metadata:
