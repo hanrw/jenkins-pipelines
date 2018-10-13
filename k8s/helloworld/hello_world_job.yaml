@@ -11,15 +11,15 @@ spec:
       - name: app
         image: python
         volumeMounts:
-          - name: hello_world
+          - name: hello-world
             mountPath: /application
         command: ["sh","-c"]
         args: ["cp /application/hello_world.py /tmp/; chmod +x /tmp/hello_world.py; /tmp/hello_world.py"]
       restartPolicy: Never
       volumes:
-      - name: hello_world
+      - name: hello-world
         configMap:
-          name: hello_world
+          name: hello-world
           items:
             - key: hello_world.py
               path: hello_world.py
