@@ -5,6 +5,7 @@ pipeline {
             steps {
                 withKubeConfig(credentialsId: 'kube-local-test.config') {
                     sh 'kubectl get pods'
+                    sh 'kubectl apply -f hello_world_job.yaml'
                 }
 
             }
